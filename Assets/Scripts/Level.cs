@@ -24,8 +24,8 @@ public class Level : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //StartCoroutine("PlayMap", "map1");
-        Debug.Log(GetLevel("map1"));
+        StartCoroutine("PlayMap", "map1");
+        //Debug.Log(GetLevel("map1"));
     }
 
     // Update is called once per frame
@@ -34,7 +34,7 @@ public class Level : MonoBehaviour
         
     }
 
-    /*
+    
     IEnumerator PlayMap(string mapName)
     {
         mapOngoing = true;
@@ -97,8 +97,9 @@ public class Level : MonoBehaviour
         }
         return offset;
     }
-    */
+    
 
+        /*
     List<object> GetLevel(string mName)
     {
         List<object> notes = new List<object>();
@@ -108,4 +109,5 @@ public class Level : MonoBehaviour
         }
         return notes;
     }
+    */
 }
