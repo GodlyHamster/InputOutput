@@ -14,10 +14,16 @@ public class HandTest : MonoBehaviour
 
     void Update()
     {
-        Frame frame = controller.Frame();
-        // do something with the tracking data in the frame...
-        Hand hand1 = new Hand();
-        Leap.Vector handpos = hand1.PalmPosition;
-        Debug.Log(handpos);
+        Frame frame = controller.Frame(); // controller is a Controller object
+        if (frame.Hands.Count > 0)
+        {
+            List<Hand> hands = frame.Hands;
+            Hand firstHand = hands[0];
+            Debug.Log(firstHand.PalmPosition.z);
+        }
+        else
+        {
+            Debug.Log("Hand not detectedddddd");
+        }
     }
 }
