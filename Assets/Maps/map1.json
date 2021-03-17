@@ -1,11 +1,18 @@
 {
 	"Level": [
 		{
+			"id": 0,
 			"note": 3,
 			"offset": 0.2
 		},
 		{
-			"note": 1,
+			"id": 1,
+			"note": 4,
+			"offset": 0.2
+		},
+		{
+			"id": 2,
+			"note": 5,
 			"offset": 0.2
 		}
 	]	

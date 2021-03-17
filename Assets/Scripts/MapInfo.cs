@@ -4,17 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-
 public class MapInfo
 {
 
-    public static T[] GetLevel<T>(string json)
+    public static T[] FromJson<T>(string json)
     {
-        string mapText = File.ReadAllText(json);
-
-        Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(mapText);
-        Debug.Log(mapText);
-
+        Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(json);
         return wrapper.Level;
     }
 
@@ -22,7 +17,5 @@ public class MapInfo
     private class Wrapper<T>
     {
         public T[] Level;
-        public int note;
-        public float offset;
     }
 }
