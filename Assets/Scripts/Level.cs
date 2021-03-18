@@ -35,11 +35,15 @@ public class Level : MonoBehaviour
 
         string mapText = File.ReadAllText(path + mapName + ".json");
         Map[] map = MapInfo.FromJson<Map>(mapText);
-        
+
+        GetComponent<Music>().PlayMusic();
+        yield return new WaitForSeconds(0.3f);
+
         while (mapOngoing)
         {
             for (int i = 0; i < map.Length; i++)
             {
+                Debug.Log(i);
                 Instantiate(_note, Directions[map[i].note], Quaternion.identity);
                 yield return new WaitForSeconds(map[i].offset);
             }
