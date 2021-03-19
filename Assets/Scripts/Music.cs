@@ -21,4 +21,9 @@ public class Music : MonoBehaviour
     {
         audio.Stop();
     }
+
+    public float GetTime()
+    {
+        return audio.time;
+    }
 }

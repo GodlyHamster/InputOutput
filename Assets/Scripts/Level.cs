@@ -43,11 +43,18 @@ public class Level : MonoBehaviour
         {
             for (int i = 0; i < map.Length; i++)
             {
-                Debug.Log(i);
                 Instantiate(_note, Directions[map[i].note], Quaternion.identity);
                 yield return new WaitForSeconds(map[i].offset);
             }
             mapOngoing = false;
+        }
+    }
+
+    private void Update()
+    {
+        if (mapOngoing)
+        {
+            Debug.Log(GetComponent<Music>().GetTime());
         }
     }
 }
