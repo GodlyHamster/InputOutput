@@ -593,12 +593,12 @@ PrefabInstance:
     - target: {fileID: 5189404784670736196, guid: b7ebbdbf972c7374d931165405e80578,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 10.15
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 5189404785386129864, guid: b7ebbdbf972c7374d931165405e80578,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 10.15
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 5189404785855812912, guid: b7ebbdbf972c7374d931165405e80578,
         type: 3}
@@ -659,6 +659,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HandController
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189404785855812915, guid: b7ebbdbf972c7374d931165405e80578,
+        type: 3}
+      propertyPath: Controller
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7ebbdbf972c7374d931165405e80578, type: 3}
