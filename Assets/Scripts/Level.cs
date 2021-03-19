@@ -31,27 +31,27 @@ public class Level : MonoBehaviour
 
     IEnumerator PlayMap(string mapName)
     {
+        yield return new WaitForSeconds(1f);
+
         mapOngoing = true;
+        Music musicPlayer = GetComponent<Music>();
 
         string mapText = File.ReadAllText(path + mapName + ".json");
         Map[] map = MapInfo.FromJson<Map>(mapText);
 
-        GetComponent<Music>().PlayMusic();
-        yield return new WaitForSeconds(0.3f);
+        musicPlayer.PlayMusic();
+        yield return new WaitForSeconds(0.32f);
+
+        int nextNote = 0;
 
         while (mapOngoing)
         {
-            for (int i = 0; i < map.Length; i++)
+            if (musicPlayer.GetTime() >= map[nextNote].time - 1.4f)
             {
-                float nextStamp = 0;
-
-                Instantiate(_note, Directions[map[i].note], Quaternion.identity);
-
-                nextStamp = map[i + 1].time;
-                Debug.Log(map[i].id + ": " + (nextStamp - map[i].time));
-                yield return new WaitForSeconds(nextStamp - map[i].time);
+                Instantiate(_note, Directions[map[nextNote].note], Quaternion.identity);
+                nextNote++;
             }
-            mapOngoing = false;
+            yield return null;
         }
     }
 }

@@ -26,4 +26,9 @@ public class Music : MonoBehaviour
     {
         return audio.time;
     }
+
+    public void SetTime(float timeStamp)
+    {
+        audio.time = timeStamp;
+    }
 }
