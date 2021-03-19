@@ -43,18 +43,15 @@ public class Level : MonoBehaviour
         {
             for (int i = 0; i < map.Length; i++)
             {
+                float nextStamp = 0;
+
                 Instantiate(_note, Directions[map[i].note], Quaternion.identity);
-                yield return new WaitForSeconds(map[i].offset);
+
+                nextStamp = map[i + 1].time;
+                Debug.Log(map[i].id + ": " + (nextStamp - map[i].time));
+                yield return new WaitForSeconds(nextStamp - map[i].time);
             }
             mapOngoing = false;
-        }
-    }
-
-    private void Update()
-    {
-        if (mapOngoing)
-        {
-            Debug.Log(GetComponent<Music>().GetTime());
         }
     }
 }
@@ -63,7 +60,7 @@ public class Level : MonoBehaviour
 public class Map {
     public int id;
     public int note;
-    public float offset;
+    public float time;
 }
 
 
