@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using System.IO;
 
 
 public class Level : MonoBehaviour
 {
 
-    [SerializeField] private GameObject _note;
+    [SerializeField] private GameObject noteObject;
 
     string path = "Assets/Maps/";
 
@@ -26,6 +27,7 @@ public class Level : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        noteObject = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Note.prefab", typeof(GameObject));
         StartCoroutine("PlayMap", "map1");
     }
 
@@ -40,15 +42,19 @@ public class Level : MonoBehaviour
         Map[] map = MapInfo.FromJson<Map>(mapText);
 
         musicPlayer.PlayMusic();
-        yield return new WaitForSeconds(0.32f);
 
         int nextNote = 0;
 
+        noteObject.GetComponent<Note>().setSpeed(10f);
+        float noteSpeed = noteObject.GetComponent<Note>().getSpeed();
+
+        float timeToMid = (9 / noteSpeed) - 0.2f;
+
         while (mapOngoing)
         {
-            if (musicPlayer.GetTime() >= map[nextNote].time - 1.4f)
+            if (musicPlayer.GetTime() >= map[nextNote].time - timeToMid)
             {
-                Instantiate(_note, Directions[map[nextNote].note], Quaternion.identity);
+                Instantiate(noteObject, Directions[map[nextNote].note], Quaternion.identity);
                 nextNote++;
             }
             yield return null;

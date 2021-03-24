@@ -7,7 +7,7 @@ public class Note : MonoBehaviour
 
     private float _moveDirection;
 
-    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float moveSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,17 @@ public class Note : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += new Vector3(_moveDirection, 0, 0) * _moveSpeed * Time.deltaTime;
+        transform.position += new Vector3(_moveDirection, 0, 0) * moveSpeed * Time.deltaTime;
+    }
+
+    public float getSpeed()
+    {
+        return moveSpeed;
+    }
+
+    public void setSpeed(float newSpeed)
+    {
+        moveSpeed = newSpeed;
     }
 
     private void OnCollisionEnter(Collision collision)
