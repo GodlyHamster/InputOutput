@@ -32,6 +32,9 @@ namespace Leap.Unity {
     private bool _showArm = true;
 
     [SerializeField]
+    private bool _showHand = true;
+
+    [SerializeField]
     private bool _castShadows = true;
 
     [SerializeField]
@@ -49,7 +52,7 @@ namespace Leap.Unity {
 
     [MinValue(0)]
     [SerializeField]
-    private float _jointRadius = 0.008f;
+    private float _jointRadius = 0.000f;
 
     [MinValue(0)]
     [SerializeField]
@@ -123,12 +126,10 @@ namespace Leap.Unity {
       base.BeginHand();
 
       if (_hand.IsLeft) {
-        _sphereMat.color = _leftColorList[_leftColorIndex];
-        _leftColorIndex = (_leftColorIndex + 1) % _leftColorList.Length;
+        _sphereMat.color = new Color(1, 0, 1);
       } else {
-        _sphereMat.color = _rightColorList[_rightColorIndex];
-        _rightColorIndex = (_rightColorIndex + 1) % _rightColorList.Length;
-      }
+        _sphereMat.color = new Color(0, 1, 0);
+            }
     }
 
     public override void UpdateHand() {
@@ -196,42 +197,49 @@ namespace Leap.Unity {
         drawCylinder(armFrontRight, armBackRight);
       }
 
-      //Draw cylinders between finger joints
-      for (int i = 0; i < 5; i++) {
-        for (int j = 0; j < 3; j++) {
-          int keyA = getFingerJointIndex(i, j);
-          int keyB = getFingerJointIndex(i, j + 1);
-
-          Vector3 posA = _spherePositions[keyA];
-          Vector3 posB = _spherePositions[keyB];
-
-          drawCylinder(posA, posB);
-        }
-      }
-
-      //Draw cylinders between finger knuckles
-      for (int i = 0; i < 4; i++) {
-        int keyA = getFingerJointIndex(i, 0);
-        int keyB = getFingerJointIndex(i + 1, 0);
-
-        Vector3 posA = _spherePositions[keyA];
-        Vector3 posB = _spherePositions[keyB];
-
-        drawCylinder(posA, posB);
-      }
-
-      //Draw the rest of the hand
-      drawCylinder(mockThumbJointPos, THUMB_BASE_INDEX);
-      drawCylinder(mockThumbJointPos, PINKY_BASE_INDEX);
-
       // Draw Spheres
-      Graphics.DrawMeshInstanced(_sphereMesh, 0, _sphereMat, _sphereMatrices, _curSphereIndex, null, 
-        _castShadows?UnityEngine.Rendering.ShadowCastingMode.On: UnityEngine.Rendering.ShadowCastingMode.Off, true, gameObject.layer);
+      Graphics.DrawMeshInstanced(_sphereMesh, 0, _sphereMat, _sphereMatrices, _curSphereIndex, null,
+      _castShadows ? UnityEngine.Rendering.ShadowCastingMode.On : UnityEngine.Rendering.ShadowCastingMode.Off, true, gameObject.layer);
 
-      // Draw Cylinders
-      if(_cylinderMesh == null) { _cylinderMesh = getCylinderMesh(1f); }
-      Graphics.DrawMeshInstanced(_cylinderMesh, 0, _backing_material, _cylinderMatrices, _curCylinderIndex, null,
-        _castShadows ? UnityEngine.Rendering.ShadowCastingMode.On : UnityEngine.Rendering.ShadowCastingMode.Off, true, gameObject.layer);
+
+            if (_showHand)
+      {
+          //Draw cylinders between finger joints
+          for (int i = 0; i < 5; i++)
+          {
+              for (int j = 0; j < 3; j++)
+              {
+                  int keyA = getFingerJointIndex(i, j);
+                  int keyB = getFingerJointIndex(i, j + 1);
+
+                  Vector3 posA = _spherePositions[keyA];
+                  Vector3 posB = _spherePositions[keyB];
+
+                  drawCylinder(posA, posB);
+              }
+          }
+
+          //Draw cylinders between finger knuckles
+          for (int i = 0; i < 4; i++)
+          {
+              int keyA = getFingerJointIndex(i, 0);
+              int keyB = getFingerJointIndex(i + 1, 0);
+
+              Vector3 posA = _spherePositions[keyA];
+              Vector3 posB = _spherePositions[keyB];
+
+              drawCylinder(posA, posB);
+          }
+
+          //Draw the rest of the hand
+          drawCylinder(mockThumbJointPos, THUMB_BASE_INDEX);
+          drawCylinder(mockThumbJointPos, PINKY_BASE_INDEX);
+
+          // Draw Cylinders
+          if (_cylinderMesh == null) { _cylinderMesh = getCylinderMesh(1f); }
+          Graphics.DrawMeshInstanced(_cylinderMesh, 0, _backing_material, _cylinderMatrices, _curCylinderIndex, null,
+            _castShadows ? UnityEngine.Rendering.ShadowCastingMode.On : UnityEngine.Rendering.ShadowCastingMode.Off, true, gameObject.layer);
+      }
     }
 
     private void drawSphere(Vector3 position) {

@@ -14,12 +14,12 @@ public class Level : MonoBehaviour
 
     public static Dictionary<int, Vector3> Directions = new Dictionary<int, Vector3>
     {
-        {0, new Vector3(-12, 3, 0)},
-        {1, new Vector3(-12, 0, 0)},
-        {2, new Vector3(-12, -3, 0)},
-        {3, new Vector3(12, 3, 0)},
-        {4, new Vector3(12, 0, 0)},
-        {5, new Vector3(12, -3, 0)}
+        {0, new Vector3(-14, 3, 0)},
+        {1, new Vector3(-14, 0, 0)},
+        {2, new Vector3(-14, -3, 0)},
+        {3, new Vector3(14, 3, 0)},
+        {4, new Vector3(14, 0, 0)},
+        {5, new Vector3(14, -3, 0)}
     };
 
     bool mapOngoing = false;
@@ -48,7 +48,7 @@ public class Level : MonoBehaviour
         noteObject.GetComponent<Note>().setSpeed(10f);
         float noteSpeed = noteObject.GetComponent<Note>().getSpeed();
 
-        float timeToMid = (9 / noteSpeed) - 0.2f;
+        float timeToMid = (11 / noteSpeed) - 0.2f;
 
         while (mapOngoing)
         {
