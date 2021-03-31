@@ -13,9 +13,23 @@ public class MapInfo
         return wrapper.Level;
     }
 
+    public static T GetMusic<T>(string json)
+    {
+        Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(json);
+        return wrapper.Music;
+    }
+
+    public static T GetNoteSpeed<T>(string json)
+    {
+        Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(json);
+        return wrapper.NoteSpeed;
+    }
+
     [Serializable]
     private class Wrapper<T>
     {
         public T[] Level;
+        public T Music;
+        public T NoteSpeed;
     }
 }

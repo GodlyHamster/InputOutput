@@ -1,4 +1,7 @@
 {
+	"Music": "Circulation",
+	"NoteSpeed": 10,
+
 	"Level": [
 		{
 			"id": 0, "note": 0, "time": 2.13

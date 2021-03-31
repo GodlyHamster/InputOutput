@@ -49,12 +49,13 @@ public class Level : MonoBehaviour
         string mapText = File.ReadAllText(path + mapName + ".json");
         Map[] map = MapInfo.FromJson<Map>(mapText);
 
-        musicPlayer.PlayMusic();
-
+        string musicName = MapInfo.GetMusic<string>(mapText);
+        musicPlayer.PlayMusic(musicName);
+        
         int nextNote = 0;
-
-        noteObject.GetComponent<Note>().setSpeed(10f);
-        float noteSpeed = noteObject.GetComponent<Note>().getSpeed();
+        
+        float noteSpeed = MapInfo.GetNoteSpeed<float>(mapText);
+        noteObject.GetComponent<Note>().setSpeed(noteSpeed);
 
         float timeToMid = (11 / noteSpeed) - 0.2f;
 

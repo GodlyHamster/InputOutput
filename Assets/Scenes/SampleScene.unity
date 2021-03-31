@@ -937,8 +937,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18e99a16bb2d3eb4b88760c6e393ed73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  music:
-  - {fileID: 8300000, guid: 6bbf096cb121f6d42b837c14bfdeda55, type: 3}
 --- !u!114 &1718660516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1072,7 +1070,7 @@ PrefabInstance:
     - target: {fileID: 631663633848744506, guid: 9d1baf11fd6d42441ba085f53c348b66,
         type: 3}
       propertyPath: Controller
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 631663633848744507, guid: 9d1baf11fd6d42441ba085f53c348b66,
         type: 3}

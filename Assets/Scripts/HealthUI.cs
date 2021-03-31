@@ -14,7 +14,6 @@ public class HealthUI : MonoBehaviour
 
     private int oldHealth = 100;
 
-    // Start is called before the first frame update
     void Start()
     {
         var healthBar = healthBarObject.transform as RectTransform;
@@ -26,14 +25,7 @@ public class HealthUI : MonoBehaviour
 
     void OnHealthUpdated(int health)
     {
-        Debug.Log(health);
-
         StartCoroutine("UpdateHealthbar", health);
-
-        if (health <= 0)
-        {
-            Debug.Log("You failed the level");
-        }
     }
 
     IEnumerator UpdateHealthbar(int health)
@@ -55,11 +47,5 @@ public class HealthUI : MonoBehaviour
         }
 
         yield return null;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

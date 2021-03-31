@@ -1,17 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class Music : MonoBehaviour
 {
-    [SerializeField] AudioClip[] music;
 
     AudioSource audio;
 
-    public void PlayMusic()
+    public void PlayMusic(string clipName)
     {
         audio = GetComponent<AudioSource>();
-        audio.clip = music[0];
+        audio.clip = Resources.Load("Music/" + clipName) as AudioClip;
         audio.loop = false;
         audio.volume = 0.2f;
         audio.Play();
@@ -35,6 +35,10 @@ public class Music : MonoBehaviour
             {
                 audio.pitch -= 0.01f;
                 yield return new WaitForSeconds(0.02f);
+            }
+            else
+            {
+                audio.pitch = 0;
             }
         }
         audio.Stop();
