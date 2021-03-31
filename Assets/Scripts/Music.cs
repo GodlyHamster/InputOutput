@@ -17,11 +17,6 @@ public class Music : MonoBehaviour
         audio.Play();
     }
 
-    public void StopMusic()
-    {
-        audio.Stop();
-    }
-
     public float GetTime()
     {
         return audio.time;
@@ -30,5 +25,18 @@ public class Music : MonoBehaviour
     public void SetTime(float timeStamp)
     {
         audio.time = timeStamp;
+    }
+
+    public IEnumerator StopMusic()
+    {
+        for (int i = 0; i < 100; i++)
+        {
+            if (audio.pitch > 0)
+            {
+                audio.pitch -= 0.01f;
+                yield return new WaitForSeconds(0.02f);
+            }
+        }
+        audio.Stop();
     }
 }

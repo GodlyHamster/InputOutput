@@ -10,6 +10,10 @@ public class Level : MonoBehaviour
 
     [SerializeField] private GameObject noteObject;
 
+    HealthSystem _healthSystem;
+
+    Music musicPlayer;
+
     string path = "Assets/Maps/";
 
     public static Dictionary<int, Vector3> Directions = new Dictionary<int, Vector3>
@@ -27,6 +31,11 @@ public class Level : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _healthSystem = GetComponent<HealthSystem>();
+        _healthSystem._HealthUpdated += OnHealthUpdated;
+
+        musicPlayer = GetComponent<Music>();
+
         noteObject = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Note.prefab", typeof(GameObject));
         StartCoroutine("PlayMap", "map1");
     }
@@ -36,7 +45,6 @@ public class Level : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         mapOngoing = true;
-        Music musicPlayer = GetComponent<Music>();
 
         string mapText = File.ReadAllText(path + mapName + ".json");
         Map[] map = MapInfo.FromJson<Map>(mapText);
@@ -58,6 +66,15 @@ public class Level : MonoBehaviour
                 nextNote++;
             }
             yield return null;
+        }
+    }
+
+    void OnHealthUpdated(int health)
+    {
+        if (health <= 0)
+        {
+            StopAllCoroutines();
+            musicPlayer.StartCoroutine("StopMusic");
         }
     }
 }

@@ -6,12 +6,14 @@ public class Note : MonoBehaviour
 {
 
     private float _moveDirection;
-
     [SerializeField] private float moveSpeed;
 
-    // Start is called before the first frame update
+    HealthSystem _healthSystem;
+    
     void Start()
     {
+        _healthSystem = GameObject.Find("LevelController").GetComponent<HealthSystem>();
+
         if (transform.position.x > 0)
         {
             _moveDirection = -1;
@@ -22,12 +24,31 @@ public class Note : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.position += new Vector3(_moveDirection, 0, 0) * moveSpeed * Time.deltaTime;
+
+        if (transform.position.x > 0 && _moveDirection == 1)
+        {
+            _healthSystem.TakeDamage(10);
+            Destroy(gameObject);
+        }
+        if (transform.position.x < 0 && _moveDirection == -1)
+        {
+            _healthSystem.TakeDamage(10);
+            Destroy(gameObject);
+        }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Hand")
+        {
+            _healthSystem.AddHealth(1);
+            Destroy(gameObject);
+        }
+    }
+    
     public float getSpeed()
     {
         return moveSpeed;
@@ -36,13 +57,5 @@ public class Note : MonoBehaviour
     public void setSpeed(float newSpeed)
     {
         moveSpeed = newSpeed;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Hand")
-        {
-            Destroy(gameObject);
-        }
     }
 }
