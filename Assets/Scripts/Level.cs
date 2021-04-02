@@ -14,7 +14,7 @@ public class Level : MonoBehaviour
 
     Music musicPlayer;
 
-    string path = "Assets/Maps/";
+    string path = "Assets/Resources/Maps/";
 
     public static Dictionary<int, Vector3> Directions = new Dictionary<int, Vector3>
     {
@@ -57,7 +57,7 @@ public class Level : MonoBehaviour
         float noteSpeed = MapInfo.GetNoteSpeed<float>(mapText);
         noteObject.GetComponent<Note>().setSpeed(noteSpeed);
 
-        float timeToMid = (11 / noteSpeed) - 0.2f;
+        float timeToMid = (11 / noteSpeed) - (0.04f / noteSpeed);
 
         while (mapOngoing)
         {
