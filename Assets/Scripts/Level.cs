@@ -37,7 +37,7 @@ public class Level : MonoBehaviour
         musicPlayer = GetComponent<Music>();
 
         noteObject = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Note.prefab", typeof(GameObject));
-        StartCoroutine("PlayMap", "map1");
+        StartCoroutine("PlayMap", "Moffumoffu De Yoi no Ja yo");
     }
 
     IEnumerator PlayMap(string mapName)

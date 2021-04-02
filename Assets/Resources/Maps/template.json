@@ -1,0 +1,10 @@
+{
+	"Music": "",
+	"NoteSpeed": 0,
+
+	"Level": [
+		{
+			"id": 0, "note": 0, "time": 0.00
+		}
+	]	
+}

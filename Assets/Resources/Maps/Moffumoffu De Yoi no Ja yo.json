@@ -1,0 +1,114 @@
+{
+	"Music": "Moffumoffu De Yoi no Ja yo",
+	"NoteSpeed": 15,
+
+	"Level": [
+		{
+			"id": 0, "note": 1, "time": 10.42
+		},
+		{
+			"id": 1, "note": 1, "time": 10.60
+		},
+		{
+			"id": 2, "note": 0, "time": 10.87
+		},
+		{
+			"id": 3, "note": 2, "time": 10.96
+		},
+		{
+			"id": 4, "note": 3, "time": 11.16
+		},
+		{
+			"id": 5, "note": 5, "time": 11.25
+		},
+
+		{
+			"id": 6, "note": 0, "time": 11.58
+		},
+		{
+			"id": 7, "note": 2, "time": 11.84
+		},
+		{
+			"id": 8, "note": 4, "time": 12.14
+		},
+		{
+			"id": 9, "note": 5, "time": 12.40
+		},
+		{
+			"id": 10, "note": 5, "time": 12.50
+		},
+		{
+			"id": 11, "note": 1, "time": 12.70
+		},
+		{
+			"id": 12, "note": 2, "time": 12.82
+		},
+		{
+			"id": 13, "note": 3, "time": 12.95
+		},
+		{
+			"id": 14, "note": 4, "time": 13.09
+		},
+		{
+			"id": 15, "note": 5, "time": 13.22
+		},
+
+		
+		{
+			"id": 16, "note": 0, "time": 13.89
+		},
+		{
+			"id": 17, "note": 1, "time": 14.20
+		},
+		{
+			"id": 18, "note": 2, "time": 14.36
+		},
+		{
+			"id": 19, "note": 1, "time": 14.65
+		},
+		{
+			"id": 20, "note": 4, "time": 14.82
+		},
+		{
+			"id": 21, "note": 5, "time": 15.04
+		},
+		{
+			"id": 22, "note": 2, "time": 15.13
+		},
+		{
+			"id": 23, "note": 3, "time": 15.33
+		},
+		{
+			"id": 24, "note": 3, "time": 15.42
+		},
+		{
+			"id": 25, "note": 4, "time": 15.64
+		},
+
+		
+		{
+			"id": 26, "note": 3, "time": 16.39
+		},
+		{
+			"id": 27, "note": 3, "time": 16.63
+		},
+		{
+			"id": 28, "note": 1, "time": 16.87
+		},
+		{
+			"id": 29, "note": 0, "time": 17.11
+		},
+		{
+			"id": 30, "note": 4, "time": 17.50
+		},
+		{
+			"id": 31, "note": 1, "time": 17.66
+		},
+		{
+			"id": 32, "note": 1, "time": 17.82
+		},
+		{
+			"id": 33, "note": 3, "time": 17.95
+		}
+	]	
+}
