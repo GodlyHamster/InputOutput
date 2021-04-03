@@ -22,6 +22,11 @@ public class Music : MonoBehaviour
         return audio.time;
     }
 
+    public float GetSongLength()
+    {
+        return audio.clip.length;
+    }
+
     public void SetTime(float timeStamp)
     {
         audio.time = timeStamp;

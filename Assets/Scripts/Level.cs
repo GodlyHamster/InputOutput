@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.IO;
-
+using UnityEngine.SceneManagement;
 
 public class Level : MonoBehaviour
 {
@@ -15,6 +15,7 @@ public class Level : MonoBehaviour
     Music musicPlayer;
 
     string path = "Assets/Resources/Maps/";
+    public static string levelName { get; set; }
 
     public static Dictionary<int, Vector3> Directions = new Dictionary<int, Vector3>
     {
@@ -28,7 +29,6 @@ public class Level : MonoBehaviour
 
     bool mapOngoing = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         _healthSystem = GetComponent<HealthSystem>();
@@ -37,7 +37,7 @@ public class Level : MonoBehaviour
         musicPlayer = GetComponent<Music>();
 
         noteObject = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Note.prefab", typeof(GameObject));
-        StartCoroutine("PlayMap", "Moffumoffu De Yoi no Ja yo");
+        StartCoroutine("PlayMap", levelName);
     }
 
     IEnumerator PlayMap(string mapName)
@@ -51,7 +51,7 @@ public class Level : MonoBehaviour
 
         string musicName = MapInfo.GetMusic<string>(mapText);
         musicPlayer.PlayMusic(musicName);
-        
+
         int nextNote = 0;
         
         float noteSpeed = MapInfo.GetNoteSpeed<float>(mapText);
@@ -66,8 +66,26 @@ public class Level : MonoBehaviour
                 Instantiate(noteObject, Directions[map[nextNote].note], Quaternion.identity);
                 nextNote++;
             }
+            if (nextNote == map.Length)
+            {
+                mapOngoing = false;
+            }
             yield return null;
         }
+    }
+
+    private void Update()
+    {
+        if (mapOngoing == false && musicPlayer.GetTime() == 0)
+        {
+            StartCoroutine("EndLevel");
+        }
+    }
+
+    IEnumerator EndLevel()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("LevelSelect");
     }
 
     void OnHealthUpdated(int health)
