@@ -11,9 +11,10 @@ public class Music : MonoBehaviour
     public void PlayMusic(string clipName)
     {
         audio = GetComponent<AudioSource>();
-        audio.clip = Resources.Load("Music/" + clipName) as AudioClip;
+        audio.clip = (AudioClip)Resources.Load("Maps/" + clipName + "/" + clipName, typeof (AudioClip));
         audio.loop = false;
         audio.volume = 0.2f;
+        Debug.Log(audio.clip.name);
         audio.Play();
     }
 

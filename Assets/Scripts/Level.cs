@@ -46,7 +46,7 @@ public class Level : MonoBehaviour
 
         mapOngoing = true;
 
-        string mapText = File.ReadAllText(path + mapName + ".json");
+        string mapText = File.ReadAllText(path + mapName + "/" + mapName + ".json");
         Map[] map = MapInfo.FromJson<Map>(mapText);
 
         string musicName = MapInfo.GetMusic<string>(mapText);
@@ -69,23 +69,23 @@ public class Level : MonoBehaviour
             if (nextNote == map.Length)
             {
                 mapOngoing = false;
+                StartCoroutine("EndLevel", "SongComplete");
             }
             yield return null;
         }
     }
 
-    private void Update()
-    {
-        if (mapOngoing == false && musicPlayer.GetTime() == 0)
-        {
-            StartCoroutine("EndLevel");
-        }
-    }
-
-    IEnumerator EndLevel()
+    IEnumerator EndLevel(string failType)
     {
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("LevelSelect");
+        if (mapOngoing == false && musicPlayer.GetTime() == 0 && failType == "SongComplete")
+        {
+            SceneManager.LoadScene("LevelSelect");
+        }
+        else if (failType == "Failed")
+        {
+            SceneManager.LoadScene("LevelSelect");
+        }
     }
 
     void OnHealthUpdated(int health)
@@ -94,6 +94,7 @@ public class Level : MonoBehaviour
         {
             StopAllCoroutines();
             musicPlayer.StartCoroutine("StopMusic");
+            StartCoroutine("EndLevel", "Failed");
         }
     }
 }
