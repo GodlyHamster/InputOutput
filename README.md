@@ -5,6 +5,6 @@
 - Ruben Dudink
 - Wouter van Dompselaar
 
-## Ontwerp:
+## Design:
 
-## Documentatie:
+## Documentation:
