@@ -6,6 +6,6 @@
 - Wouter van Dompselaar
 
 ## Design:
-![alt text](https://github.com/GodlyHamster/InputOutput/blob/main/readmeImages/idea_0.png?raw=true)
+<img src="https://github.com/GodlyHamster/InputOutput/blob/main/readmeImages/idea_0.png" width="350" title="cheese">
 
 ## Documentation:
