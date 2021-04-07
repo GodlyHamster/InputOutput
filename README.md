@@ -1,7 +1,6 @@
 # InputOutput
 
-Team:
+**Team:**
 
--Ruben Dudink
-
--Wouter van Dompselaar
+- Ruben Dudink
+- Wouter van Dompselaar
