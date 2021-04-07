@@ -16,4 +16,4 @@
 - Presentation
   - https://docs.google.com/presentation/d/1JqouaW2buXNQNDrk-9AAKmIox8t52yGm9PO30_MeixE/edit?usp=sharing
 
-<a src="https://docs.google.com/presentation/d/1JqouaW2buXNQNDrk-9AAKmIox8t52yGm9PO30_MeixE/edit?usp=sharing">Presentation</a>
+<p src="https://docs.google.com/presentation/d/1JqouaW2buXNQNDrk-9AAKmIox8t52yGm9PO30_MeixE/edit?usp=sharing">Presentation</p>
